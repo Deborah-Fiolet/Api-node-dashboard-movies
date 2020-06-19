@@ -4,13 +4,13 @@ const Country = require('../models/').Country;
  * @api {get} /countries Show all countries
  * @apiName getCountries
  * @apiGroup Country
- * @apiSuccess {String} _id id of the Country.
- * @apiSuccess {String} name name of the Country.
+ * @apiSuccess {String} id of the Country.
+ * @apiSuccess {String} name of the Country.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     [{
  *       "id": 1,
- *       "name": "Blonde"
+ *       "name": "France"
  *     }]
  */
 exports.country_list = (req,res,next)=>{
@@ -31,13 +31,13 @@ exports.country_list = (req,res,next)=>{
  * 
  * @apiParam {Number} id of the Country
  * 
- * @apiSuccess {String} _id id of the Country.
- * @apiSuccess {String} name name of the Country.
+ * @apiSuccess {String} id of the Country.
+ * @apiSuccess {String} name of the Country.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
- *     {
- *       "id": 1,
- *       "name": "Blonde"
+  *     {
+ *         "id": 1,
+ *         "name": "France",
  *     }
  */
 exports.country_detail = (req,res,next)=>{
@@ -57,19 +57,19 @@ exports.country_detail = (req,res,next)=>{
  * @apiName addCountry
  * @apiGroup Country
  * 
- * @apiParam {String} name name of the Country.
+ * @apiParam {String} name of the Country.
  * @apiParamExample {json} Request-Example:
 *     {
-*       "name": "Blonde"
+*       "name": "France"
 *     }
  * 
- * @apiSuccess {String} _id id of the Country.
- * @apiSuccess {String} name name of the Country.
+ * @apiSuccess {String} id of the Country.
+ * @apiSuccess {String} name of the Country.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
  *       "id": 1,
- *       "name": "Blonde"
+ *       "name": "France"
  *     }
  */
 exports.country_add = (req,res,next) => {
@@ -88,20 +88,20 @@ exports.country_add = (req,res,next) => {
  * @apiName editCountry
  * @apiGroup Country
  * 
- * @apiParam {Number} id id of the Country.
- * @apiParam {String} name name of the Country.
+ * @apiParam {Number} id of the Country.
+ * @apiParam {String} name of the Country.
  * @apiParamExample {json} Request-Example:
 *     {
-*       "name": "Blonde"
+*       "name": "France"
 *     }
  * 
- * @apiSuccess {String} _id id of the Country.
- * @apiSuccess {String} name name of the Country.
+ * @apiSuccess {String} id of the Country.
+ * @apiSuccess {String} name of the Country.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
  *       "id": 1,
- *       "name": "Blonde"
+ *       "name": "France"
  *     }
  */
 exports.country_edit = (req,res,next) => {
@@ -125,7 +125,7 @@ exports.country_edit = (req,res,next) => {
  * @apiName deleteCountry
  * @apiGroup Country
  * 
- * @apiParam {Number} id id of the Country.
+ * @apiParam {Number} id of the Country.
  * 
  * @apiSuccess {String} message Country deleted.
  * @apiSuccessExample {json} Success-Response:

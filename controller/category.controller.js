@@ -56,7 +56,7 @@ exports.category_detail = (req,res,next)=>{
 
 exports.category_count= (req,res,next)=>{
     Movie.findAll({
-        attributes: [[sequelize.fn('count', sequelize.col('categoryId')), 'value'],[sequelize.col('Category.name'), 'data']],
+        attributes: [[sequelize.fn('COUNT', sequelize.col('categoryId')), 'value'],[sequelize.col('Category.name'), 'data']],
         include : [ 
             { 
                 model: Category,
@@ -78,19 +78,19 @@ exports.category_count= (req,res,next)=>{
  * @apiName addCategory
  * @apiGroup Category
  * 
- * @apiParam {String} name name of the Category.
+ * @apiParam {String} name of the Category.
  * @apiParamExample {json} Request-Example:
 *     {
-*       "name": "Blonde"
+*       "name": "Humoristique"
 *     }
  * 
- * @apiSuccess {String} _id id of the Category.
- * @apiSuccess {String} name name of the Category.
+ * @apiSuccess {String} id of the Category.
+ * @apiSuccess {String} name of the Category.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
  *       "id": 1,
- *       "name": "Blonde"
+ *       "name": "Humoristique"
  *     }
  */
 exports.category_add = (req,res,next) => {
@@ -109,11 +109,11 @@ exports.category_add = (req,res,next) => {
  * @apiName editCategory
  * @apiGroup Category
  * 
- * @apiParam {Number} id id of the Category.
- * @apiParam {String} name name of the Category.
+ * @apiParam {Number} id of the Category.
+ * @apiParam {String} name of the Category.
  * @apiParamExample {json} Request-Example:
 *     {
-*       "name": "Blonde"
+*       "name": "Humoristique"
 *     }
  * 
  * @apiSuccess {String} _id id of the Category.
@@ -122,7 +122,7 @@ exports.category_add = (req,res,next) => {
  *     HTTP/1.1 200 OK
  *     {
  *       "id": 1,
- *       "name": "Blonde"
+ *       "name": "Humoristique"
  *     }
  */
 exports.category_edit = (req,res,next) => {
@@ -146,7 +146,7 @@ exports.category_edit = (req,res,next) => {
  * @apiName deleteCategory
  * @apiGroup Category
  * 
- * @apiParam {Number} id id of the Category.
+ * @apiParam {Number} id of the Category.
  * 
  * @apiSuccess {String} message Category deleted.
  * @apiSuccessExample {json} Success-Response:

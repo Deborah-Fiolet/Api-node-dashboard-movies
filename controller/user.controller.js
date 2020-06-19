@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken');
  * @api {get} /users Show all users
  * @apiName getUsers
  * @apiGroup User
- * @apiSuccess {String} _id id of the User.
- * @apiSuccess {String} name name of the User.
+ * @apiSuccess {String} id of the User.
+ * @apiSuccess {String} name of the User.
  * @apiSuccess {String} firstName firstName of the User.
  * @apiSuccess {String} email email of the User.
  * @apiSuccess {String} password password of the User.
@@ -17,13 +17,13 @@ const jwt = require('jsonwebtoken');
  *     [
  *        { 
  *            "id": 1,
- *            "name": "Ribaloff",
- *            "firstName": "Greg",
- *            "email": "greg@prescience.fr",
- *            "password": "$2b$10$Q.vphQPV..2Sgi1Ziba6v.gUeUMaaoYSmHxdoT3RCu6NFUXvTgoq.",
- *            "birthday": "1982-04-03T22:00:00.000Z",
- *            "createdAt": "2020-02-10T22:15:34.000Z",
- *            "updatedAt": "2020-02-10T22:15:34.000Z"
+ *            "name": "Musk",
+ *            "firstName": "Elon",
+ *            "email": "elon.musk@spacex.fr",
+ *            "password": "qf:<ijh,u_èr_hjdkjqkjhdjhjz,hjqézhvekq;",
+ *            "birthday": "1971-06-38T10:00:00.000Z",
+ *            "createdAt": "2020-02-10T14:15:34.000Z",
+ *            "updatedAt": "2020-02-10T14:15:34.000Z"
  *        }
  *      ]
  */
@@ -45,23 +45,23 @@ exports.user_list = (req,res,next)=>{
  * 
  * @apiParam {Number} id of the User
  * 
- * @apiSuccess {String} _id id of the User.
- * @apiSuccess {String} name name of the User.
- * @apiSuccess {String} firstName firstName of the User.
- * @apiSuccess {String} email email of the User.
- * @apiSuccess {String} password password of the User.
- * @apiSuccess {Date} birthday birthday of the User.
+ * @apiSuccess {String} id of the User.
+ * @apiSuccess {String} name of the User.
+ * @apiSuccess {String} firstName of the User.
+ * @apiSuccess {String} email of the User.
+ * @apiSuccess {String} password of the User.
+ * @apiSuccess {Date} birthday of the User.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *        { 
  *            "id": 1,
- *            "name": "Ribaloff",
- *            "firstName": "Greg",
- *            "email": "greg@prescience.fr",
- *            "password": "$2b$10$Q.vphQPV..2Sgi1Ziba6v.gUeUMaaoYSmHxdoT3RCu6NFUXvTgoq.",
- *            "birthday": "1982-04-03T22:00:00.000Z",
- *            "createdAt": "2020-02-10T22:15:34.000Z",
- *            "updatedAt": "2020-02-10T22:15:34.000Z"
+ *            "name": "Musk",
+ *            "firstName": "Elon",
+ *            "email": "elon.musk@spacex.fr",
+ *            "password": "qf:<ijh,u_èr_hjdkjqkjhdjhjz,hjqézhvekq;",
+ *            "birthday": "1971-06-38T10:00:00.000Z",
+ *            "createdAt": "2020-02-10T14:15:34.000Z",
+ *            "updatedAt": "2020-02-10T14:15:34.000Z"
  *        }
  */
 exports.user_detail = (req,res,next)=>{
@@ -87,13 +87,14 @@ exports.user_detail = (req,res,next)=>{
  * @apiParam {String} password password of the User.
  * @apiParam {Date} birthday birthday of the User.
  * @apiParamExample {json} Request-Example:
-*     {
-*       "name": "Ribaloff",
-*       "firstName": "Greg",
-*       "email": "greg@prescience.fr",
-*       "password": "fauxpwd",
-*       "birthday": "16/04/2000"
-*     }
+*        { 
+ *            "id": 1,
+ *            "name": "Musk",
+ *            "firstName": "Elon",
+ *            "email": "elon.musk@spacex.fr",
+ *            "password": "qf:<ijh,u_èr_hjdkjqkjhdjhjz,hjqézhvekq;",
+ *            "birthday": "1971-06-38T10:00:00.000Z",
+ *        }
  * 
  * @apiSuccess {String} _id id of the User.
  * @apiSuccess {String} name name of the User.
@@ -104,15 +105,15 @@ exports.user_detail = (req,res,next)=>{
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     [
- *        { 
+*        { 
  *            "id": 1,
- *            "name": "Ribaloff",
- *            "firstName": "Greg",
- *            "email": "greg@prescience.fr",
- *            "password": "$2b$10$Q.vphQPV..2Sgi1Ziba6v.gUeUMaaoYSmHxdoT3RCu6NFUXvTgoq.",
- *            "birthday": "1982-04-03T22:00:00.000Z",
- *            "createdAt": "2020-02-10T22:15:34.000Z",
- *            "updatedAt": "2020-02-10T22:15:34.000Z"
+ *            "name": "Musk",
+ *            "firstName": "Elon",
+ *            "email": "elon.musk@spacex.fr",
+ *            "password": "qf:<ijh,u_èr_hjdkjqkjhdjhjz,hjqézhvekq;",
+ *            "birthday": "1971-06-38T10:00:00.000Z",
+ *            "createdAt": "2020-02-10T14:15:34.000Z",
+ *            "updatedAt": "2020-02-10T14:15:34.000Z"
  *        }
  *      ]
  */
@@ -141,18 +142,30 @@ exports.user_signin = (req, res, next) => {
  * @apiParam {Number} id id of the User.
  * @apiParam {String} name name of the User.
  * @apiParamExample {json} Request-Example:
-*     {
-*       "name": "Blonde"
-*     }
+*        { 
+ *            "id": 1,
+ *            "name": "Musk",
+ *            "firstName": "Elon",
+ *            "email": "elon.musk@spacex.fr",
+ *            "password": "qf:<ijh,u_èr_hjdkjqkjhdjhjz,hjqézhvekq;",
+ *            "birthday": "1971-06-38T10:00:00.000Z",
+ *         
+ *        }
  * 
  * @apiSuccess {String} _id id of the User.
  * @apiSuccess {String} name name of the User.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
- *     {
- *       "id": 1,
- *       "name": "Blonde"
- *     }
+*        { 
+ *            "id": 1,
+ *            "name": "Musk",
+ *            "firstName": "Elon",
+ *            "email": "elon.musk@spacex.fr",
+ *            "password": "qf:<ijh,u_èr_hjdkjqkjhdjhjz,hjqézhvekq;",
+ *            "birthday": "1971-06-38T10:00:00.000Z",
+ *            "createdAt": "2020-02-10T14:15:34.000Z",
+ *            "updatedAt": "2020-02-10T14:15:34.000Z"
+ *        }
  */
 exports.user_edit = (req,res,next) => {
     const id = req.params.id;
@@ -211,8 +224,8 @@ exports.user_delete = (req,res,next) => {
  * @apiParam {String} password password of the User.
  * @apiParamExample {json} Request-Example:
 *     {
-*       "email": "greg@prescience.fr",
-*       "password": "fauxpwd"
+*       "email": "elon.musk@spacex.fr",
+*       "password": "teslaforever"
 *     }
  * 
  * @apiSuccess {String} message message
@@ -230,15 +243,16 @@ exports.user_delete = (req,res,next) => {
  *     {
  *  "message": "You win - auth ok",
  *   "user": {
- *       "id": 3,
- *       "name": "Ribaloff",
- *       "firstName": "Greg",
- *       "email": "greg@prescience.fr",
- *       "password": "$2b$10$lSQhogxYuMrslIin9ODj8u0M2e9NspP9HW0IJXrnatApJWenw36WO",
- *       "birthday": "1982-04-03T22:00:00.000Z",
- *       "createdAt": "2020-02-10T22:23:39.000Z",
- *       "updatedAt": "2020-02-10T22:23:39.000Z"
- *   },
+*        { 
+ *            "id": 1,
+ *            "name": "Musk",
+ *            "firstName": "Elon",
+ *            "email": "elon.musk@spacex.fr",
+ *            "password": "qf:<ijh,u_èr_hjdkjqkjhdjhjz,hjqézhvekq;",
+ *            "birthday": "1971-06-38T10:00:00.000Z",
+ *            "createdAt": "2020-02-10T14:15:34.000Z",
+ *            "updatedAt": "2020-02-10T14:15:34.000Z"
+ *        }
  *   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyZWdAcHJlc2NpZW5jZS5mciIsImlhdCI6MTU4MTM3NTAyMSwiZXhwIjoxNTgxMzgyMjIxfQ.Zms2rIUfmwNhT1fE81msZ6SO1r-oFJ6kciKRvg5G70w"
 }
  */  

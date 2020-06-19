@@ -7,8 +7,8 @@ const MovieActor = require('../models/').MovieActor;
  * @api {get} /movies Show all movies
  * @apiName getMovies
  * @apiGroup Movie
- * @apiSuccess {String} _id id of the Movie.
- * @apiSuccess {String} name name of the Movie.
+ * @apiSuccess {String} id of the Movie.
+ * @apiSuccess {String} name of the Movie.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     [{
@@ -56,8 +56,8 @@ exports.movie_list = (req,res,next)=>{
  * 
  * @apiParam {Number} id of the Movie
  * 
- * @apiSuccess {String} _id id of the Movie.
- * @apiSuccess {String} name name of the Movie.
+ * @apiSuccess {String} id of the Movie.
+ * @apiSuccess {String} name of the Movie.
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  *     {
@@ -101,7 +101,7 @@ exports.movie_average = (req,res,next)=>{
 exports.movie_list_year = (req,res,next)=>{
 
     Movie.findAll({
-        attributes: [[sequelize.fn('count', sequelize.col('id')), 'value'],[sequelize.col('year'), 'data']],
+        attributes: [[sequelize.fn('COUNT', sequelize.col('id')), 'value'],[sequelize.col('year'), 'data']],
         group:['year'],
         raw: true,
     })
@@ -140,23 +140,11 @@ exports.movie_list_best = (req,res,next)=>{
  * @apiGroup Movie
  * 
  * @apiParam {String} name name of the Movie.
- * @apiParam {Float} degree degree of the Movie.
- * @apiParam {String} description description of the Movie.
- * @apiParam {String} picture picture of the Movie.
- * @apiParam {Integer} year year of creation of the Movie.
- * @apiParam {Integer} BreweryId BreweryId of the Movie.
- * @apiParam {Integer} TypeId TypeId of the Movie.
  * @apiParamExample {json} Request-Example:
  
  ** 
- * @apiSuccess {String} id id of the Movie.
- * @apiSuccess {String} name name of the Movie.
- * @apiSuccess {Float} degree degree of the Movie.
- * @apiSuccess {String} description description of the Movie.
- * @apiSuccess {String} picture picture of the Movie.
- * @apiSuccess {Integer} year year of the Movie.
- * @apiSuccess {Integer} TypeId TypeId of the Movie.
- * @apiSuccess {Integer} BreweryId BreweryId of the Movie.
+ * @apiSuccess {String} id of the Movie.
+ * @apiSuccess {String} name of the Movie.
  * @apiSuccess {Date} createdAt date of creation of the Movie.
  * @apiSuccess {Date} updatedAt last update of the Movie.
  * @apiSuccessExample {json} Success-Response:
@@ -189,14 +177,8 @@ exports.movie_add = (req,res,next) => {
  * @apiName editMovie
  * @apiGroup Movie
  * 
- * @apiSuccess {String} id id of the Movie.
- * @apiSuccess {String} name name of the Movie.
- * @apiSuccess {Float} degree degree of the Movie.
- * @apiSuccess {String} description description of the Movie.
- * @apiSuccess {String} picture picture of the Movie.
- * @apiSuccess {Integer} year year of the Movie.
- * @apiSuccess {Integer} TypeId TypeId of the Movie.
- * @apiSuccess {Integer} BreweryId BreweryId of the Movie.
+ * @apiSuccess {String} id of the Movie.
+ * @apiSuccess {String} name of the Movie.
  * @apiSuccess {Date} createdAt date of creation of the Movie.
  * @apiSuccess {Date} updatedAt last update of the Movie.
  * @apiSuccessExample {json} Success-Response:
@@ -234,7 +216,7 @@ exports.movie_edit = (req,res,next) => {
  * @apiName deleteMovie
  * @apiGroup Movie
  * 
- * @apiParam {Number} id id of the Movie.
+ * @apiParam {Number} id of the Movie.
  * 
  * @apiSuccess {String} message Movie deleted.
  * @apiSuccessExample {json} Success-Response:
